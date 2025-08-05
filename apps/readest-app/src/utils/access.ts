@@ -12,7 +12,7 @@ interface Token {
 }
 
 export const getUserPlan = (token: string): UserPlan => {
-  const data = jwtDecode<Token>(token) || {};
+  jwtDecode<Token>(token) || {};
   return 'pro';
 };
 
@@ -31,7 +31,7 @@ export const getStoragePlanData = (token: string) => {
 };
 
 export const getTranslationPlanData = (token: string) => {
-  const data = jwtDecode<Token>(token) || {};
+  jwtDecode<Token>(token) || {};
   const plan: UserPlan = 'pro';
   const usage = getDailyUsage() || 0;
   const quota = DEFAULT_DAILY_TRANSLATION_QUOTA[plan];
@@ -44,7 +44,7 @@ export const getTranslationPlanData = (token: string) => {
 };
 
 export const getDailyTranslationPlanData = (token: string) => {
-  const data = jwtDecode<Token>(token) || {};
+  jwtDecode<Token>(token) || {};
   const plan = 'pro';
   const fixedQuota = parseInt(process.env['NEXT_PUBLIC_TRANSLATION_FIXED_QUOTA'] || '0');
   const quota =
